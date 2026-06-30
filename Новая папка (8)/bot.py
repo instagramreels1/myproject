@@ -5,8 +5,8 @@ import time
 import os
 
 # ===== ЧИТАЕМ ПЕРЕМЕННЫЕ ИЗ ОКРУЖЕНИЯ =====
-BOT_TOKEN = os.environ.get("BOT_TOKEN")  # ПРАВИЛЬНО!
-YOUR_CHAT_ID = os.environ.get("YOUR_CHAT_ID")  # ПРАВИЛЬНО!
+BOT_TOKEN = os.environ.get("BOT_TOKEN")
+YOUR_CHAT_ID = os.environ.get("YOUR_CHAT_ID")
 
 if not BOT_TOKEN or not YOUR_CHAT_ID:
     print("❌ Ошибка: Не заданы BOT_TOKEN или YOUR_CHAT_ID!")
@@ -133,16 +133,10 @@ if __name__ == "__main__":
     print("=" * 50)
     print("🚀 БОТ МАТРЁШКА РП ЗАПУЩЕН!")
     print("=" * 50)
-    print(f"🤖 Бот: @{bot.get_me().username}")
-    print(f"📨 Данные будут приходить в: {YOUR_CHAT_ID}")
-    print("=" * 50)
-    print("🔄 Ожидание сообщений...")
-    print("=" * 50)
     
     while True:
         try:
             bot.polling(none_stop=True, interval=1, timeout=30)
         except Exception as e:
             print(f"❌ Ошибка: {e}")
-            print("🔄 Перезапуск через 5 секунд...")
             time.sleep(5)
